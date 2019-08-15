@@ -1,0 +1,93 @@
+[[split]]
+
+== _split_
+
+=== _split(String regex)_
+
+该方法可以把字符串按照指定的分割符进行分割，然后返回字符串数组。
+
+[source,java,linenums]
+----
+    String[] split = "a,b".split(",");
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组长度为：2
+    数组内容为：[a, b]
+
+当目标字符串为空字符串时，返回的是拥有一个空字符串的数组。
+
+[source,java,linenums]
+----
+    String[] split = "".split(",");
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组长度为：1
+    数组内容为：[]
+
+当目标字符串分割后的数组末尾为空字符串时，该空字符串会被过滤，不会置入返回的数组中，直到遇到不为空的字符串，这时会返回该字符串及之前的数据分割后组成的数组。
+
+[source,java,linenums]
+----
+    String[] split = ",,,a,,".split(",");
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组长度为：4
+    数组内容为：[, , , a]
+
+当目标字符串仅由分隔符构成时，会返回一个空数组。
+
+[source,java,linenums]
+----
+    String[] split = ",,,,,".split(",");
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组长度为：0
+    数组内容为：[]
+
+当需要返回结果数组中带有末尾的空字符串时，需要调用双参数的 _split_ 方法。
+
+=== _split(String regex, int limit)_
+
+_limit_ 即满足分割条件下的最大数组长度，当分割后数组长度达到该值，该分割符后面的字符串不再进行分割，作为返回数组的最后元素。
+
+[source,java,linenums]
+----
+    String[] split = ",,,,,".split(",", 3);
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组大小为：3
+    数组内容为：[, , ,,,]
+
+该返回结果的数组末尾允许为空字符串，因此将 _limit_ 设置为比数组长度大的值，会返回所有的分割结果。
+
+[source,java,linenums]
+----
+    String[] split = ",,,,,".split(",", 10);
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组大小为：6
+    数组内容为：[, , , , , ]
+
+将 _limit_ 设置为非正整数时，同样会返回所有的分割结果。
+
+[source,java,linenums]
+----
+    String[] split = ",,,,,".split(",", -1);
+    System.out.println("数组长度为：" + split.length);
+    System.out.println("数组内容为：" + Arrays.toString(split));
+----
+
+    数组大小为：6
+    数组内容为：[, , , , , ]

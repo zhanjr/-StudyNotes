@@ -14,6 +14,6 @@ IntelliJ IDEA 插件：https://plugins.jetbrains.com/plugin/7391-asciidoc
  
 Asciidoctor：http://asciidoctor.org/
 
-工作流使用“pygments”库进行语法高亮展示。使用以下命令进行安装：
+使用“pygments”库进行语法高亮展示。使用以下命令进行安装：
 ```ruby 
 gem install pygments.rb 
